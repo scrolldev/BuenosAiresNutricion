@@ -19,12 +19,14 @@ for(var i = 0; i < pacientes.length; i++) {
         console.log("Peso es incorrecto");
         tdIMC.textContent = "Peso es incorrectos";
         pesoEsValido = false;
+        
     }
    
     if((altura < 0) || (altura > 3.00)) {
         console.log("Altura es incorrecto");
         tdIMC.textContent = "Altura es incorrectos";
         alturaEsValida = false;
+        
     }
 
     if(pesoEsValido && alturaEsValida) {
