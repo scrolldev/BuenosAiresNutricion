@@ -6,6 +6,7 @@ botonAdicionar.addEventListener("click", function(event) {
     var pacienteTr = construirTr(paciente);
     var tabla = document.querySelector("#tabla-pacientes");
     tabla.appendChild(pacienteTr);
+    form.reset();
 });
 
 function capturarDatosPaciente(form){
@@ -22,28 +23,22 @@ function capturarDatosPaciente(form){
 }
 
 function construirTr(paciente){
-       //Creacion de Tds y Tr
+    
        var pacienteTr = document.createElement("tr");
        pacienteTr.classList.add("paciente");
-       var nombreTd = document.createElement("td");
-       var pesoTd = document.createElement("td");
-       var alturaTd = document.createElement("td");
-       var gorduraTd = document.createElement("td");
-       var imcTd = document.createElement("td");
-   
-       //Asignar los valores a la propiedad textContent 
-       nombreTd.textContent = paciente.nombre;
-       pesoTd.textContent = paciente.peso;
-       alturaTd.textContent = paciente.altura;
-       gorduraTd.textContent = paciente.gordura;
-       imcTd.textContent = paciente.imc;
-   
-       //Asignar al tr de los td, y la tabla de tr    
-       pacienteTr.appendChild(nombreTd);
-       pacienteTr.appendChild(pesoTd);
-       pacienteTr.appendChild(alturaTd);
-       pacienteTr.appendChild(gorduraTd);
-       pacienteTr.appendChild(imcTd);
+     
+       pacienteTr.appendChild(construirTd(paciente.nombre,"info-nombre"));
+       pacienteTr.appendChild(construirTd(paciente.peso,"info-peso"));
+       pacienteTr.appendChild(construirTd(paciente.altura,"info-altura"));
+       pacienteTr.appendChild(construirTd(paciente.gordura,"info-gordura"));
+       pacienteTr.appendChild(construirTd(paciente.imc,"info-imc"));
 
        return pacienteTr;
+}
+
+function construirTd(dato,clase){
+    var td = document.createElement("td");
+    td.classList.add(clase);
+    td.textContent = dato;
+    return td;
 }
