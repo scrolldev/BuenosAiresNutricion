@@ -2,33 +2,9 @@ botonAdicionar.addEventListener("click", function(event) {
     event.preventDefault();
 
     var form = document.querySelector("#form-adicionar");
-
     var paciente = capturarDatosPaciente(form);
-
+    var pacienteTr = construirTr(paciente);
     var tabla = document.querySelector("#tabla-pacientes");
-
-    //Creacion de Tds y Tr
-    pacienteTr = document.createElement("tr");
-    nombreTd = document.createElement("td");
-    pesoTd = document.createElement("td");
-    alturaTd = document.createElement("td");
-    gorduraTd = document.createElement("td");
-    imcTd = document.createElement("td");
-
-    //Asignar los valores a la propiedad textContent 
-    nombreTd.textContent = paciente.nombre;
-    pesoTd.textContent = paciente.peso;
-    alturaTd.textContent = paciente.altura;
-    gorduraTd.textContent = paciente.gordura;
-    imcTd.textContent = paciente.imc;
-
-    //Asignar al tr de los td, y la tabla de tr    
-    pacienteTr.appendChild(nombreTd);
-    pacienteTr.appendChild(pesoTd);
-    pacienteTr.appendChild(alturaTd);
-    pacienteTr.appendChild(gorduraTd);
-    pacienteTr.appendChild(imcTd);
-
     tabla.appendChild(pacienteTr);
 });
 
@@ -43,4 +19,31 @@ function capturarDatosPaciente(form){
     }
     
     return paciente;
+}
+
+function construirTr(paciente){
+       //Creacion de Tds y Tr
+       var pacienteTr = document.createElement("tr");
+       pacienteTr.classList.add("paciente");
+       var nombreTd = document.createElement("td");
+       var pesoTd = document.createElement("td");
+       var alturaTd = document.createElement("td");
+       var gorduraTd = document.createElement("td");
+       var imcTd = document.createElement("td");
+   
+       //Asignar los valores a la propiedad textContent 
+       nombreTd.textContent = paciente.nombre;
+       pesoTd.textContent = paciente.peso;
+       alturaTd.textContent = paciente.altura;
+       gorduraTd.textContent = paciente.gordura;
+       imcTd.textContent = paciente.imc;
+   
+       //Asignar al tr de los td, y la tabla de tr    
+       pacienteTr.appendChild(nombreTd);
+       pacienteTr.appendChild(pesoTd);
+       pacienteTr.appendChild(alturaTd);
+       pacienteTr.appendChild(gorduraTd);
+       pacienteTr.appendChild(imcTd);
+
+       return pacienteTr;
 }
