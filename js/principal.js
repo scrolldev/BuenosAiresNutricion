@@ -1,6 +1,7 @@
 var botonAdicionar = document.querySelector("#adicionar-paciente");
 
-botonAdicionar.addEventListener("click", function() {
+botonAdicionar.addEventListener("click", function(event) {
+    event.preventDefault();
     console.log("Usted hizo clic en el titulo");
 });
 
