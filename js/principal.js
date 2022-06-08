@@ -1,5 +1,10 @@
+var botonAdicionar = document.querySelector("#adicionar-paciente");
+
+botonAdicionar.addEventListener("click", function() {
+    console.log("Usted hizo clic en el titulo");
+});
+
 var pacientes = document.querySelectorAll(".paciente");
-console.log(pacientes);
 
 for(var i = 0; i < pacientes.length; i++) {
     var paciente = pacientes[i];
@@ -33,9 +38,6 @@ for(var i = 0; i < pacientes.length; i++) {
         var imc = peso / (altura * altura);
         tdIMC.textContent = imc.toFixed(2);
     }
-
-
-
 }
 
 
