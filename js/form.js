@@ -3,14 +3,11 @@ botonAdicionar.addEventListener("click", function(event) {
 
     var form = document.querySelector("#form-adicionar");
 
-    var nombre = form.nombre.value;
-    var peso = form.peso.value;
-    var altura = form.altura.value;
-    var gordura = form.gordura.value;
+    var paciente = capturarDatosPaciente(form);
 
-   var tabla = document.querySelector("#tabla-pacientes");
+    var tabla = document.querySelector("#tabla-pacientes");
 
-
+    //Creacion de Tds y Tr
     pacienteTr = document.createElement("tr");
     nombreTd = document.createElement("td");
     pesoTd = document.createElement("td");
@@ -18,12 +15,14 @@ botonAdicionar.addEventListener("click", function(event) {
     gorduraTd = document.createElement("td");
     imcTd = document.createElement("td");
 
-    nombreTd.textContent = nombre;
-    pesoTd.textContent = peso;
-    alturaTd.textContent = altura;
-    gorduraTd.textContent = gordura;
-    imcTd.textContent = calcularIMC(peso,altura);
+    //Asignar los valores a la propiedad textContent 
+    nombreTd.textContent = paciente.nombre;
+    pesoTd.textContent = paciente.peso;
+    alturaTd.textContent = paciente.altura;
+    gorduraTd.textContent = paciente.gordura;
+    imcTd.textContent = paciente.imc;
 
+    //Asignar al tr de los td, y la tabla de tr    
     pacienteTr.appendChild(nombreTd);
     pacienteTr.appendChild(pesoTd);
     pacienteTr.appendChild(alturaTd);
@@ -32,3 +31,16 @@ botonAdicionar.addEventListener("click", function(event) {
 
     tabla.appendChild(pacienteTr);
 });
+
+function capturarDatosPaciente(form){
+    //Capturando datos del usuario
+    var paciente = {
+        nombre: form.nombre.value,
+        peso: form.peso.value,
+        altura: form.altura.value,
+        gordura: form.gordura.value,
+        imc: calcularIMC(form.peso.value,form.altura.value)
+    }
+    
+    return paciente;
+}
