@@ -15,10 +15,13 @@ botonAdicionar.addEventListener("click", function(event) {
     var tabla = document.querySelector("#tabla-pacientes");
     tabla.appendChild(pacienteTr);
     form.reset();
+
+    var mensajesErrores = document.querySelector("#mensajes-errores");
+    mensajesErrores.innerHTML = "";
 });
 
 function capturarDatosPaciente(form){
-    //Capturando datos del usuario
+    
     var paciente = {
         nombre: form.nombre.value,
         peso: form.peso.value,
@@ -53,6 +56,20 @@ function construirTd(dato,clase){
 
 function validarPaciente(paciente){
     var errores = []
+
+    if(paciente.nombre.length == 0){
+        errores.push("El campo nombre no puede estar vacio");
+    }
+    if(paciente.peso.length == 0){
+        errores.push("El campo peso no puede estar vacio");
+    }
+    if(paciente.altura.length == 0){
+        errores.push("El campo altura no puede estar vacio");
+    }
+    if(paciente.gordura.length == 0){
+        errores.push("El campo % gordura no puede estar vacio");
+    }
+    
     if(!validarPeso(paciente.peso)){
         errores.push("El peso es incorrecto");
     }
@@ -65,6 +82,7 @@ function validarPaciente(paciente){
 
 function exhibirMensajesErrores(errores){
     var ul = document.querySelector("#mensajes-errores");
+    ul.innerHTML = "";
     errores.forEach(function(error){
         var li = document.createElement("li");
         li.textContent = error;
