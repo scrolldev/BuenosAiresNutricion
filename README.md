@@ -1,2 +1,2 @@
-# BuonaVitaNutricion
-Buona Vita Nutricion
+# Buenos Aires Nutrición 
+Calculadora del índice de masa corporal (IMC)
